@@ -1,0 +1,49 @@
+import discord
+import re
+intents = discord.Intents.default()
+intents.message_content = True
+client = discord.Client(intents=intents)
+@client.event
+async def on_ready():
+    print(f'{client.user} olarak giriş yaptık')
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('Merhaba'):
+        await message.channel.send(f'Merhaba ben {client.user}! ben bir botum!')
+    if message.content.startswith('$yardım'):
+        await message.channel.send("Merhaba,İklim depişikliği nedir? \n,Roblox ne zaman kuruldu?, \n Discord ne zaman kuruldu?,Senin gerçek adın ne?,Hava nasıl?,Ne yapabilirsin?,Nasılsın?,Sen ne zaman geliştirilmeye başlandın?,Espiri yap,Bana ilginç bir bilgi ver,Valorant ne zaman kuruldu?,Google ne zaman kuruldu?,Windows ne zaman kuruldu?,Kodland ne zaman kuruldu?,ChatGPT yi tanıyor musun? UYARI:Soruların küçük büyük harflerini de göz önünde bulundurarak aynısını yazmalısınız.")
+    if message.content.startswith('İklim değişikliği nedir?'):
+        await message.channel.send('İklim değişikliği, sıcaklık ve hava modellerindeki uzun vadeli değişimleri ifade eder. Bu değişimler doğal sebeplerle de gerçekleşmektedir, örneğin 1860 yılından günümüze kadar tutulan kayıtlar, ortalama küresel sıcaklığın 0,5-0,8 C kadar artığını göstermektedir, ancak 1800’lerden bu yana, insan faaliyetleri iklim değişikliğinin ana itici gücü olmuştur.')
+    if message.content.startswith('Roblox ne zaman kuruldu?'):
+        await message.channel.send('Roblox, 2006 yılında David Baszucki ve Erik Cassel tarafından kuruldu. İlk olarak 2006 yılında halka açıldı ve 2007 yılında resmi olarak piyasaya sürüldü. O zamandan beri, oyun platformu büyük bir popülerlik kazandı ve dünya genelinde milyonlarca oyuncu tarafından kullanılmaktadır. Roblox, oyunculara kendi oyunlarını yaratma ve paylaşma imkanı sunduğu için oldukça geniş bir topluluk ve içerik çeşitliliğine sahiptir.')
+    if message.content.startswith('Discord ne zaman kuruldu?'):
+        await message.channel.send('Discord, 2015 yılında Jason Citron ve Stan Vishnevskiy tarafından kuruldu. İlk olarak 2015 te piyasaya sürülen bu uygulama, oyuncular ve topluluklar için sesli, yazılı ve video iletişim araçları sunarak popülerlik kazandı. Discord, özellikle oyun toplulukları arasında hızlı bir şekilde yaygınlaştı ve zamanla geniş bir kullanıcı kitlesine hitap eden bir platform haline geldi.')
+    if message.content.startswith('Senin gerçek adın ne?'):
+        await message.channel.send('Ben bir botum, adım yok ama size yardımcı olabilirim.')
+    if message.content.startswith('Hava nasıl?'):
+        await message.channel.send('Üzgünüm, hava durumu bilgilerini güncel olarak sağlayamam.')
+    if message.content.startswith('Ne yapabilirsin?'):
+        await message.channel.send('Ben, belirli soruları yanıtlayabilir ve bazı genel bilgiler sağlayabilirim.')
+    if message.content.startswith('Nasılsın?'):
+        await message.channel.send('Ben bir botum, duygularım yok ama size yardımcı olmak için buradayım!')
+    if message.content.startswith('Sen ne zaman geliştirilmeye başlandın?'):
+        await message.channel.send('Ben 2024 yılında geliştirilmeye başlandım')
+    if message.content.startswith('Espiri yap'):
+        await message.channel.send('Sana birkaç espiri yapabilirim,Ot ota ne demiş?(biz otuz),Tuz yiyen kişiye ne denir?(otuz yedi),Rüzgar antik kentte nasıl eser?(tarihi eser)')
+    if message.content.startswith('Bana ilginç bir bilgi ver'):
+        await message.channel.send('Tabii! İşte ilginç bir bilgi: Dünya üzerindeki tüm karasal bitkilerin yaklaşık %80 i tropikal ormanlarda bulunur. Bu ormanlar, sadece bitkiler açısından değil, aynı zamanda hayvanlar açısından da büyük bir çeşitliliğe ev sahipliği yapar. Tropikal ormanlar, dünya üzerindeki en zengin ekosistemlerden biridir ve birçok canlı türü bu bölgelerde yaşar. Bu yüzden bu ormanların korunması, biyoçeşitlilik açısından kritik önem taşır.')
+    if message.content.startswith('Valorant ne zaman kuruldu?'):
+        await message.channel.send('Valorant, Riot Games tarafından geliştirilen bir birinci şahıs nişancı oyunudur ve resmi olarak 2 Haziran 2020 de piyasaya sürülmüştür. Oyun, beta sürümü olarak 7 Nisan 2020 de başladı. Valorant, özellikle stratejik oyun mekanikleri ve karakter tabanlı yetenekleri ile dikkat çekti.')
+    if message.content.startswith('Google ne zaman kuruldu?'):
+        await message.channel.send('Google, 4 Eylül 1998 de Larry Page ve Sergey Brin tarafından kuruldu. İkili, Stanford Üniversitesi nde doktora öğrencisi olarak çalışırken arama motorunun temelini attılar. Google, ilk başta bir araştırma projesi olarak başladı, ancak hızla popülerlik kazandı ve internetin en önemli araçlarından biri haline geldi.')
+    if message.content.startswith('Windows ne zaman kuruldu?'):
+        await message.channel.send('Microsoft Windows işletim sistemi ilk olarak 20 Kasım 1985 te piyasaya sürüldü. İlk sürüm, Windows 1.0 olarak bilinir ve MS-DOS işletim sistemi üzerine kurulu bir grafik kullanıcı arayüzü sunuyordu. Windows un gelişimi, kullanıcıların bilgisayarla etkileşim biçimlerini önemli ölçüde değiştirdi ve zamanla dünya çapında en yaygın kullanılan işletim sistemi haline geldi.')
+    if message.content.startswith('Kodland ne zaman kuruldu?'):
+        await message.channel.send('Kodland, 2015 yılında Türkiye de kuruldu. Kodland, genellikle yazılım ve teknoloji eğitimleri sunarak çocuklara ve gençlere kodlama becerileri kazandırmayı amaçlayan bir eğitim platformudur. Kodland ın amacı, öğrencilere modern teknolojiler konusunda bilgi ve deneyim kazandırmak ve onları geleceğin dijital dünyasına hazırlamaktır.')
+    if message.content.startswith('ChatGPT yi tanıyor musun?'):
+        await message.channel.send('Evet, ChatGPT yi tanıyorum! ChatGPT, OpenAI tarafından geliştirilen bir yapay zeka dil modelidir. 2020 de piyasaya sürülen GPT-3 modelinin bir parçası olarak, metin tabanlı çeşitli görevleri yerine getirmek için eğitilmiştir. Size bilgi sağlamak, sorularınızı yanıtlamak, yazı yazmak ve daha fazlası konusunda yardımcı olabilir. Sorularınız veya merak ettiğiniz bir konu varsa, size nasıl yardımcı olabilirim?')
+    if message.content.startswith('Opera nedir?'):
+        await message.channel.send('Opera, çok amaçlı bir web tarayıcısıdır ve kullanıcılarına internet üzerinde gezinti yaparken çeşitli özellikler sunar.')
+client.run("")
